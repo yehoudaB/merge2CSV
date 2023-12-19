@@ -9,7 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 
 import java.io.*;
@@ -32,8 +31,9 @@ public class Merge2CsvApplication implements CommandLineRunner{
 
         final ArrayList<String[]> csvData1 = importCsvData("./FILES/csv1.csv", ';');
         final ArrayList<String[]> csvData2 = importCsvData("./FILES/csv2.csv", ';');
+        // get current dir
 
-        String templatePath = "template.xlsx";
+        String templatePath = "template.xlsx"; // the template file is in resources folder (src/main/resources) I didn't find the way to call it from the another folder
         merge2CsvToXlsx( templatePath,"sheet1", "sheet2", "merged", csvData1, csvData2);
 
     }
